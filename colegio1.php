@@ -88,7 +88,7 @@
 			Fecha actualizado: 18/11/2015
 			Cambio realizado: Obtener la salida del Barrio y el código de la localidad
 			Fecha actualizado: 19/11/2015
-			Cambio realizado: Obtener la salida de la columna Nombre Institución, Genero. Obtener salida de los campos Preescolar, Primaria, Secundaria, Media, Total Matriculados separados por ','
+			Cambio realizado: Obtener la salida de la columna Nombre Institución, Genero. Obtener salida de los campos Preescolar, Primaria, Secundaria, Media, Total Matriculados separados por ','.Excluir el operador DISTINCT en cada agregado, para obtener las tuplas cuando sea 0.
 			Observaciones: URL => http://localhost/colegio/colegio1.php?latitud=4.700606&longitud=-74.071503&distancia=100*/
 			//Zona de declaraciones
 			//$campos 	=	'"'.$params['entidad'].'"."COD_COL","'.$params['entidad'].'"."NOM_COL","'.$params['entidad'].'"."SECTOR","'.$params['entidad'].'"."DIR_COL","'.$params['entidad'].'"."TEL_COL","'.$params['entidad'].'"."EMAIL","'.$params['entidad'].'"."WEB_INST","'.$params['entidad'].'"."PREESCOLAR","'.$params['entidad'].'"."PRIMARIA","'.$params['entidad'].'"."SECUNDARIA","'.$params['entidad'].'"."MEDIA","'.$params['entidad'].'"."LATITUD","'.$params['entidad'].'"."LONGITUD","'.$params['entidad'].'"."CARACTER","'.$params['entidad'].'"."TOR_MAT"';
@@ -97,14 +97,14 @@
 			$campos		.=	'"'.$params['entidad'].'"."SCANOMBRE","'.$params['entidad'].'"."COD_LOCAL"';
 			$campos		.= 	',';
 			$campos		.=	'"'.$params['entidad'].'"."NOM_INST","'.$params['entidad2'].'"."GENERO"';
-			$agreg		=	',WM_CONCAT('.'DISTINCT'.' '.'"'.$params['entidad2'].'"."COD_JORN") AS "JORNADA"';
+			$agreg		=	',WM_CONCAT('.''.' '.'"'.$params['entidad2'].'"."COD_JORN") AS "JORNADA"';
 			//Niveles de educación desde entidad2
-			$agreg		.=	',WM_CONCAT('.'DISTINCT'.' '.'"'.$params['entidad2'].'"."PREESCOLAR") AS "PREESCOLAR"';
-			$agreg		.=	',WM_CONCAT('.'DISTINCT'.' '.'"'.$params['entidad2'].'"."PRIMARIA") AS "PRIMARIA"';
-			$agreg		.=	',WM_CONCAT('.'DISTINCT'.' '.'"'.$params['entidad2'].'"."SECUNDARIA") AS "SECUNDARIA"';			
-			$agreg		.=	',WM_CONCAT('.'DISTINCT'.' '.'"'.$params['entidad2'].'"."MEDIA") AS "MEDIA"';
+			$agreg		.=	',WM_CONCAT('.''.' '.'"'.$params['entidad2'].'"."PREESCOLAR") AS "PREESCOLAR"';
+			$agreg		.=	',WM_CONCAT('.''.' '.'"'.$params['entidad2'].'"."PRIMARIA") AS "PRIMARIA"';
+			$agreg		.=	',WM_CONCAT('.''.' '.'"'.$params['entidad2'].'"."SECUNDARIA") AS "SECUNDARIA"';			
+			$agreg		.=	',WM_CONCAT('.''.' '.'"'.$params['entidad2'].'"."MEDIA") AS "MEDIA"';
 			//Total de matriculados desde entidad2 
-			$agreg		.=	',WM_CONCAT('.'DISTINCT'.' '.'"'.$params['entidad2'].'"."TOT_MAT") AS "TOTAL_MATRICULADOS"';
+			$agreg		.=	',WM_CONCAT('.''.' '.'"'.$params['entidad2'].'"."TOT_MAT") AS "TOTAL_MATRICULADOS"';
 			$arregloData=	array();
 			//Creación de la consulta
 			//$qry 		= 	"SELECT $campos"." "."FROM"." ".$params['entidad2'];
